@@ -1,0 +1,396 @@
+@import "reset.scss";
+@import "variables.scss";
+@import "fonts.scss";
+@import "mixin.scss";
+
+body{
+  font-family: 'Visby CF', sans-serif;
+  line-height: 1.4;
+}
+
+.grid-container{
+  max-width: 1160px;
+  // width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(10px, 1fr) );
+  grid-gap: 10px;
+  
+  @for $i from 1 through 12 {
+    &-#{$i} {
+      grid-template-columns: repeat( $i, 1fr );
+    }
+  }
+  
+  
+  @include small-only(){
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.btn{
+  font-weight: 700;
+  font-size: 28px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 30px;
+  padding: 10px 30px 8px 75px;
+  position: relative;
+
+  &::before{
+      content: '';
+      position: absolute;
+      left: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-image: url('../images/icon-whatsapp-branco.png');
+      width: 35px;
+      height: 35px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+  }
+
+
+  &-azul{
+      background-color: $blue;
+      color: $white;
+  }
+  
+  &-branco{
+      background-color: $white;
+      color: $blue;
+
+      &::before{
+          background-image: url('../images/icon-whatsapp.png');
+      }
+      
+  }
+  
+  &-verde{
+      background-color: $green;
+      color: $white;
+      
+  }
+}
+
+@include small-only(){
+  br{
+    // display: none;
+  }   
+}
+
+#banner{
+  background-image: url('../images/bg-banner.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: black;
+  color: $white;
+  min-height: 100vh;
+  padding: 30px 0;
+  
+  @include small-only(){
+    background-image: url('../images/bg-brick.png');
+    padding: 80px 0;
+  }
+
+  .grid{
+     grid-template-columns: 2fr 1fr; 
+
+     @include small-only(){
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .img-mobile{
+    display: none;
+    margin-bottom: 50px;
+    
+    @include small-only(){
+      display: block;
+    }
+    
+  }
+
+  .content-banner{
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+
+      h1{
+          font-size: 36px;
+          font-weight: 800;
+          margin-bottom: 20px;
+
+          span{
+              color: red;
+          }
+      }
+
+      p{
+          font-size: 30px;
+          font-weight: 500;
+          
+          span{
+              color: $blue;
+              font-weight: 700;
+          }
+          
+          b{
+              font-weight: 700;
+
+          }
+
+          &:last-child{
+            margin: 20px 0 50px;
+          }
+      }
+  }
+
+  .form-hubspot{
+      background-color: $gray;
+      padding: 0;
+      
+      .header-form{
+          background-color: $blue;
+          padding: 10px 20px;
+          
+          h2{
+              text-transform: uppercase;
+              text-align: center;
+              font-weight: 700;
+              font-size: 21px;
+          }
+      }
+      
+      #hubspotForm{
+          padding: 15px 30px 0;
+      }
+      
+      p{
+          padding: 0 30px 15px;
+          color: $black;
+          font-size: 10px;
+
+      }
+  }
+}
+
+
+#dinheiro-na-conta{
+  background-image: url('../images/bg-dinheiro-na-conta.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: black;
+  color: $white;
+  min-height: 100vh;
+  padding: 50px 0;
+
+  h2{
+      font-size: 36px;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 70px;
+  }
+
+  .grid-2{
+      margin-bottom: 60px;
+
+      .col{
+          display: grid;
+          grid-template-columns: 160px 1fr;
+          align-items: center;
+          
+          @include small-only(){
+            grid-template-columns: 120px 1fr;
+            
+          }
+
+          .content{
+              h3{
+                  color: $teal;
+                  text-transform: uppercase;
+                  font-size: 34px;
+                  font-weight: 700;
+                  line-height: 1;
+                  margin-bottom: 10px;
+                  
+                  @include small-only(){
+                    font-size: 24px;
+                  }
+              }
+      
+              p{
+                  font-size: 18px;
+
+                  b{
+                      font-weight: 900;
+                  }
+      
+              }
+          }
+      }
+  }
+
+  .grid:last-child{
+      text-align: center;
+
+      p{
+          font-weight: 700;
+          font-size: 18px;
+          margin-bottom: 12px;
+      }
+
+  }
+
+}
+
+#produtos{
+  background-color: $blue;
+  color: $white;
+  padding: 60px 0;
+
+  h2{
+      font-size: 36px;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 30px;
+
+      @include small-only(){        
+        br{
+          display: none;
+        }
+        
+      }
+  }
+
+  p{
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 35px;
+
+      b{
+          font-weight: 700;
+      }
+  }
+
+  .grid-produtos{
+      gap: 35px;
+      margin-bottom: 30px;
+  }
+
+  .images-produtos{
+      margin-bottom: 12px;
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+
+  }
+
+  .grid:last-child{
+      text-align: center;
+
+  }
+
+}
+
+#liberdade-financeira{
+  background-color: $gray;
+  text-align: center;
+  padding: 50px 0;
+
+  h2{
+      color: $blue;
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 50px;
+      
+      @include small-only(){        
+        font-size: 26px;
+    
+        
+      }
+  }
+
+  .grid-3{
+      gap: 60px;
+      margin-bottom: 60px;
+
+      .box-preco{
+          background-color: $blue;
+          color: $white;
+          border-radius: 30px;
+          padding: 40px 30px;
+
+          .preco{
+              font-size: 53px;
+              font-weight: 900;
+              line-height: 0.9;
+
+              @include small-only(){        
+                font-size: 40px;
+              }
+          }
+
+          hr{
+              background-color: $dark-blue;
+              box-shadow: none;
+              height: 5px;
+              border: 0;
+              margin-bottom: 20px;
+          }
+
+          .condicao{
+              display: block;
+              font-size: 69px;
+              line-height: 0.9;
+              font-weight: 800;
+              text-align: center;
+
+              @include small-only(){        
+                font-size: 50px;
+              }
+              
+              &:last-child{
+                  font-size: 50px;
+
+                  
+                  span{
+                      font-size: 72px;
+
+                      
+                  }
+
+              }
+          }
+
+          .textinho{
+              font-size: 30px;
+          }
+
+      }
+  }
+
+
+}
+
+
+
+#footer{
+  background-color: $blue;
+  padding: 30px 0;
+
+  @include small-only(){
+    .logo-footer {
+      text-align: center;
+    }
+  }
+}
